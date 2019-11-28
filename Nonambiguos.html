@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        .btn-block {
+            width: 100%;
+        }
+
+        .container {
+            margin-top: 5%;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col m8 s12 offset-m2">
+            <div class="card">
+                <div class="card-action center-align grey darken-4">
+                    <span class="card-title white-text"><b>Simple Cash Drawer</b></span>
+                </div>
+
+                <div class="card-action">
+                    <div class="row">
+                        <div class="input-field col m12 s12">
+                            <i class="material-icons prefix">attach_money</i>
+                            <input id="textarea" type="text"/>
+                        </div>
+                        <div class="col s12 m12">
+                            <div class="col s3 m2">
+                                <button class="btn waves-effect waves-light red lighten-2 btn-block" value="+1" id="up">
+                                    <i class="material-icons">arrow_upward</i>
+                                </button>
+                            </div>
+                            <div class="col s3 m2">
+                                <button class="btn waves-effect waves-light red lighten-2 btn-block" value="-1" id="down">
+                                    <i class="material-icons">arrow_downward</i>
+                                </button>
+                            </div>
+                            <div class="col s4 m4 offset-m4 offset-s2 ">
+                                <button class="btn waves-effect waves-light red lighten-2 btn-block" id="clear">clear
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <div class="row"></div>
+                    <div class="row">
+                        <div class="col s4 m4">
+                            <button class="btn waves-effect waves-light btn-block" value="+1" id="1">1
+                                <i class="material-icons left">attach_money</i>
+                            </button>
+                        </div>
+                        <div class="col s4 m4">
+                            <button class="btn waves-effect waves-light btn-block" value="+5" id="5">5
+                                <i class="material-icons left">attach_money</i>
+                            </button>
+                        </div>
+                        <div class="col s4 m4">
+                            <button class="btn waves-effect waves-light btn-block" value="+10" id="10">10
+                                <i class="material-icons left">attach_money</i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row"></div>
+                    <div class="row">
+                        <div class="col s4 m4">
+                            <button class="btn waves-effect waves-light btn-block" value="+0.5" id="50">50&#162;
+<!--                                <i class="material-icons right">attach_money</i>-->
+                            </button>
+                        </div>
+                        <div class="col s4 m4">
+                            <button class="btn waves-effect waves-light btn-block" value="+0.25" id="25">25&#162;
+<!--                                <i class="material-icons right">attach_money</i>-->
+                            </button>
+                        </div>
+                        <div class="col s4 m4">
+                            <button class="btn waves-effect waves-light btn-block" value="+0.1" id="100">10&#162;
+<!--                                <i class="material-icons right">attach_money</i>-->
+                            </button>
+                        </div>
+                    </div>
+                   
+
+                    <div class="divider"></div>
+                    <div class="row"></div>
+                    <div class="row">
+                        <div class="col s4 offset-s4">
+                            <button data-target="modal1"
+                                    class="btn waves-effect waves-light red darken-2 btn-block modal-trigger"
+                                    onclick="myFunction()">
+                                Add Money
+                                <i class="material-icons left">attach_money</i>
+                            </button>
+                            <div id="modal1" class="modal">
+                                <div class="modal-content ">
+                                    <h4>Confirm Amount</h4>
+                                    <div class="input-field col s6">
+                                        <i class="material-icons left">attach_money</i>
+                                        <h4 id="result" type="text" readonly></h4>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="index2.html"
+                                       class="modal-close waves-effect waves-green btn-flat">Add</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#1,#2,#3,#4,#5,#6,#7,#8,#9,#10,#50,#100,#25,#up,#down,#add, #subtract, #multiply, #divide, #power, #dot, #para1, #para2').click(function () {
+            var v = $(this).val();
+            var total = $('#textarea').val($('#textarea').val() + v);
+            $('#textarea').val(eval($('#textarea').val()));
+
+        });
+
+        $('#equal').click(function () {
+            $('#textarea').val(eval($('#textarea').val()));
+        });
+
+
+        $('#clear').click(function () {
+            $('#textarea').val('');
+        });
+
+        $('.modal').modal();
+
+
+    });
+
+    function myFunction() {
+        $('#result').text($('#textarea').val());
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
